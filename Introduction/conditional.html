@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>Curso JavaScript</title>
+  </head>
+  <body>
+    <script>
+      //  conditionals
+      // if else
+      function returnGender(gender) {
+        if (gender == 'M') {
+          return 'Male';
+        } else if (gender == 'F') {
+          return 'Female';
+        } else {
+          return 'Outro';
+        }
+      }
+
+      var gender = returnGender('M');
+      console.log(gender);
+
+      // switch
+      function returnGender2(gender2) {
+        switch (gender2) {
+          case 'M':
+            return 'Male';
+          case 'F':
+            return 'Female';
+          default:
+            return 'Outro'
+        }
+      }
+      
+      var gender2 = returnGender2('F')
+      console.log(gender2);      
+    </script>
+  </body>
+</html>

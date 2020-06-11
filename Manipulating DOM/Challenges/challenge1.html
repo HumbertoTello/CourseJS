@@ -1,0 +1,24 @@
+<html>
+  <body>
+    <div class="app">
+      <button class="button">Button</button>
+    </div>
+    <script>
+      function createElement() {
+        var square = document.createElement("div");
+        square.setAttribute('class', 'box')
+        square.style.width = 100;
+        square.style.height = 100;
+        square.style.backgroundColor = 'red';
+        
+        return square
+      }
+
+      var divElement = document.querySelector(".app");
+      var buttonElement = document.querySelector(".button");
+      buttonElement.onclick = function() {
+        divElement.appendChild(createElement());
+      }
+    </script>
+  </body>
+</html>

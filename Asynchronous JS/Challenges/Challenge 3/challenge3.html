@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>Challenge 3</title>
+  </head>
+  <body>
+    <input class="input" type="text" placeholder="Digite o nome do usuário">
+    <button class="button">Buscar</button>
+  </body>
+
+  <script>
+    var bodyElement = document.querySelector('body');
+    var buttonElement = document.querySelector('.button');
+    var inputElement = document.querySelector('.input');
+    
+    var username = inputElement.value;
+    
+    buttonElement.onclick = function() {
+      var username = inputElement.value;
+      var link = "https://api.github.com/users/" + username + "/repos";
+      var textUsername = document.createTextNode(username);
+
+      var ulElement = document.createElement('ul');
+      var liElement = document.createElement('li');
+      var aElement = document.createElement('a');
+      var loading = document.createTextNode('Loading...');
+
+      aElement.setAttribute('href', link);
+      aElement.appendChild(loading);
+      liElement.appendChild(aElement);
+      ulElement.appendChild(liElement);
+      bodyElement.appendChild(ulElement);
+
+      var promise = function () {
+        return new Promise(function(resolve, reject) {
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', link);
+          xhr.send(null)
+
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+              aElement.removeChild(loading);
+              if(xhr.status === 200) {
+                resolve(JSON.parse(xhr.responseText));
+              } else {
+                reject('Erro na requisição');
+              }  
+            }
+          }
+        });
+      }
+
+      promise()
+        .then(function(response) {
+          console.log(response);
+          aElement.appendChild(textUsername);
+        })
+        .catch(function(error) {
+          console.warn('Erro na requisição');
+          aElement.appendChild(textUsername);
+        })
+    }
+  </script>
+</html>

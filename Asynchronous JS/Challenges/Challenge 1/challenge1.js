@@ -15,8 +15,16 @@ function checaIdade(idade) {
 
 checaIdade(20)
   .then(function () {
-    console.log("Maior que 18");
+    function message() {
+      alert("Older than 18")
+    }
+    
+    setTimeout(message, 2000);
   })
   .catch(function () {
-    console.log("Menor que 18");
+    function message() {
+      alert("Younger than 18")
+    }
+    
+    setTimeout(message, 2000);
   });

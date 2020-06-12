@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Challenge 2</title>
+  </head>
+  <body>
+    <input class="input" type="text" placeholder="Digite o nome do usuário">
+    <button class="button">Buscar</button>
+  </body>
+
+  <script>
+    var bodyElement = document.querySelector('body');
+    var buttonElement = document.querySelector('.button');
+    var inputElement = document.querySelector('.input');
+    
+    var username = inputElement.value;
+    
+    buttonElement.onclick = function() {
+      var username = inputElement.value;
+      var link = "https://api.github.com/users/" + username + "/repos";
+      var textUsername = document.createTextNode(username);
+
+      var ulElement = document.createElement('ul');
+      var liElement = document.createElement('li');
+      var aElement = document.createElement('a');
+      
+      aElement.setAttribute('href', link);
+      aElement.appendChild(textUsername);
+      liElement.appendChild(aElement);
+      ulElement.appendChild(liElement);
+      bodyElement.appendChild(ulElement);
+    }
+  </script>
+</html>
